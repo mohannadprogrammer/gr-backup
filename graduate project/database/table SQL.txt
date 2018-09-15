@@ -1,0 +1,63 @@
+Project
+pro_id | path | config_file | url
+
+TestBlock
+tes_id | own_id |call_id
+
+BuildClass
+tes_id | pro_id | classname
+
+RunClass
+tes_id | pro_id | classname
+
+Report
+tes_id | pro_id | run_date | j_repo |commit_id
+
+PRIMARY KEY
+REFERENCES
+
+Create table project (pro_id int primary key,
+path text not null , config_file text not null ,
+url text unique not null );
+
+create table testblock (tes_id text unique, 
+own_id int REFERENCES project (pro_id) ,
+primary key (tes_id,own_id),
+call_id text REFERENCES testblock (tes_id)
+);
+ 
+create table buildclass 
+(tes_id text REFERENCES testblock(tes_id),
+pro_id int REFERENCES project(pro_id),
+classname text not null unique);
+
+create table runclass 
+(tes_id text REFERENCES testblock(tes_id),
+pro_id int REFERENCES project(pro_id),
+classname text not null unique);
+
+create table report(tes_id text REFERENCES testblock(tes_id),
+pro_id int REFERENCES project(pro_id),
+run_date date not null ,
+commit_id text primary key );
+
+
+create sequence proj_id_seq;
+alter table project alter pro_id set default nextval('proj_id_seq');
+Select setval('proj_id_seq', 2 );
+
+
+
+ALTER TABLE report ALTER COLUMN run_date SET DEFAULT now();
+
+create table build_report(classname text , compile_rep text ,
+tes_id text REFERENCES testblock(tes_id),
+pro_id int REFERENCES project(pro_id),
+commit_id text REFERENCES report(commit_id));
+
+create table run_report(classname text , junit_rep text ,
+tes_id text REFERENCES testblock(tes_id),
+pro_id int REFERENCES project(pro_id),
+commit_id text REFERENCES report(commit_id));
+
+ALTER TABLE project drop COLUMN path ;

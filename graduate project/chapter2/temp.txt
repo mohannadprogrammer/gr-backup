@@ -1,0 +1,13 @@
+What is Jenkins?
+Jenkins is a self-contained, open source automation server which can be used to automate all sorts of tasks related to building, testing, and delivering or deploying software.
+Jenkins can be installed through native system packages, Docker, or even run standalone by any machine with a Java Runtime Environment (JRE) installed.(jenkins)
+What to Use Jenkins for and When to Use It
+Use Jenkins to automate your development workflow so you can focus on work that matters most. Jenkins is commonly used for:
+
+Building projects
+Running tests to detect bugs and other issues as soon as they are introduced
+Static code analysis
+Deployment(https://github.com/jenkinsci/jenkins/blob/master/README.md).
+
+
+example if we need to test division method we can create two test blocks, the first test blocks for normal inputs and the second is for up normal inputs (division by zero for example). Developer trigger first test block to run, when it finish he is able to get run report while success of this test block trigger the second test block. In case passing first test and fail in the second test, after fixing the code developer is able to start the second test block first and run the first test block as regression test.

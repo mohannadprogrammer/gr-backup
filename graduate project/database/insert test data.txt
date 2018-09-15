@@ -1,0 +1,25 @@
+insert into project values ( 1 , 'D:/gr_proj/javacode/JUNIT_WORKSPACE' ,
+'configration' , 'github/..');
+
+insert into testblock values ( 'method' , 1 );
+insert into testblock values ( 'method12' , 1 ,'method');
+insert into testblock values ( 'method123' , 1 , 'method12');
+
+insert into buildclass values ( 'method' , 1 ,'TestJunit.java' );
+insert into buildclass values ( 'method12' , 1 ,'TestJunit1.java');
+insert into buildclass values ( 'method123' , 1 , 'Calculator.java');
+insert into buildclass values ( 'method123' , 1 , 'CalculatorTest.java');
+
+
+insert into runclass values ( 'method' , 1 ,'TestJunit' );
+insert into runclass values ( 'method12' , 1 ,'TestJunit1');
+insert into runclass values ( 'method123' , 1 , 'CalculatorTest');
+
+
+WITH RECURSIVE pipline AS (
+select tes_id from testblock where own_id = $1 and tes_id = $2
+UNION 
+select t.testid from testblock t 
+INNER JOIN pipline p ON  p.tes_id = t.call_id )
+where own_id = $1 ;
+select * from pipline ;

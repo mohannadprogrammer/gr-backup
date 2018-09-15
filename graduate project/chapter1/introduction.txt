@@ -1,0 +1,25 @@
+The growth of Agile and the demand of it’s placing on 
+QA teams for faster delivery cycles is forcing many to 
+replace the older monolithic development models with a 
+more streamlined process . However, pervasive method such as 
+manual testing are keeping the teams for adopting flexible 
+practices like continuous integration and continuous 
+delivery and reaching true agility. Continuous integration 
+is software practice in which small adjustments to the 
+underlying code in an application are verified using 
+automated building and testing every time a team member 
+makes changes .Continuous delivery is process of getting a 
+new builds into production environment as quickly as possible
+. In order to provide the true agility we need to develop an
+ automated continuous integration, continuous delivery 
+pipeline to enable teams to release a constant flow of 
+software updates into production to quicken release cycles, 
+lower cost and reduce the risk associated with development.
+Improving the software processes is commonly agreed to be 
+the solution for software companies fighting against delivery
+ delays, cost overriding, and quality flaws in the end 
+products 
+
+
+
+kristen Aebersold

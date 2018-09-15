@@ -1,0 +1,43 @@
+Project
+pro_id | path | config_file | url
+
+TestBlock
+tes_id | own_id |call_id
+
+BuildClass
+tes_id | pro_id | classname
+
+RunClass
+tes_id | pro_id | classname
+
+Report
+tes_id | pro_id | run_date | j_repo |commit_id
+
+PRIMARY KEY
+REFERENCES
+
+Create table project (pro_id int primary key,
+path text not null , config_file text not null ,
+url text unique not null );
+
+create table testblock (tes_id text unique, 
+own_id int REFERENCES project (pro_id) ,
+primary key (tes_id,own_id),
+call_id text REFERENCES testblock (tes_id)s
+);
+ 
+create table buildclass 
+(tes_id text REFERENCES testblock(tes_id),
+pro_id int REFERENCES project(pro_id),
+classname text not null unique);
+
+create table runclass 
+(tes_id text REFERENCES testblock(tes_id),
+pro_id int REFERENCES project(pro_id),
+classname text not null unique);
+
+create table report(tes_id text REFERENCES testblock(tes_id),
+pro_id int REFERENCES project(pro_id),
+run_date date not null ,
+j_repo text ,
+commit_id text not null );
